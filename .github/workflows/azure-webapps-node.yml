@@ -38,21 +38,7 @@ jobs:
         with:
           name: node-app
           path: ./build
-          
-  job2:
-    runs-on: ubuntu-latest
-    name: Job 2
-    needs: buildAndtest
-    if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
-    steps:
-    - name: Approval
-      id: approval
-      uses: actions/request-action@v2
-      with:
-        name: Approve Deployment
-        message: Do you want to deploy this change?
-  
-      
+    
   deploy:
     permissions:
       actions: read
