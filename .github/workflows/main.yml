@@ -47,13 +47,16 @@ jobs:
     - name: create build dir
       run: mkdir build
       
-
-    
     
     - name: Download artifact from build job
       uses: actions/download-artifact@v3
       with:
         name: node-app
+        path: ./build
         
-
+    - name: verify
+      run: |
+        ls
+        cd build
+        ls
       
