@@ -47,8 +47,7 @@ jobs:
     - name: create build dir
       run: mkdir build
       
-    - name: Set working dir
-      working-directory: ./build
+
     
     
     - name: Download artifact from build job
@@ -56,10 +55,5 @@ jobs:
       with:
         name: node-app
         
-    - name: showrepo
-      run: |
-        cd ..
-        ls
-        cd build
-        ls
+
       
