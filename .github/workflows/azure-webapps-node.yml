@@ -85,4 +85,4 @@ jobs:
           remove-existing-files: true
 
           # Folder containing the files to be uploaded to the Storage Container
-          folder: .\build
+          folder: ./build
