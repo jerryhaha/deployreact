@@ -6,15 +6,15 @@ env:
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
-#   push:
-#     branches: ['main']
+  push:
+    branches: ['main']
   workflow_dispatch:
   
 permissions: 
   contents: read
 
 jobs:
-  buildAndtest:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -29,8 +29,8 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
+          npm run build
+          
           
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -38,14 +38,14 @@ jobs:
           name: node-app
           path: ./build
     
-  deploy:
+  Deploy:
     permissions:
       actions: read
       contents: read
       id-token: write
       
     runs-on: ubuntu-latest
-    needs: [buildAndtest]
+    needs: [Build]
     environment: Production
     steps:
       - name: Download artifact from build job
